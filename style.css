@@ -11,8 +11,3 @@ body{
 .book:hover{
     transform: translateY(-20px);
 }
-footer{
-    text-align: center;
-    background-color: #909597;
-    padding: 10px 20px;
-}

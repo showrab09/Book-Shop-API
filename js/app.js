@@ -3,10 +3,16 @@ const displayBox = document.getElementById('displayBox');
 const resultBox = document.getElementById('result-box');
 //loading the api data
 const searchButton = () => {
-    const url = `https://openlibrary.org/search.json?q=${searchInput.value}`
-    fetch(url)
-        .then(response => response.json())
-        .then(data => displayData(data))
+    //empty search box error handling
+    if (searchInput.value === '') {
+        alert('Please enter a Valid Book name');
+    }
+    else {
+        const url = `https://openlibrary.org/search.json?q=${searchInput.value}`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => displayData(data))
+    }
 };
 
 const displayData = (books) => {
@@ -17,6 +23,7 @@ const displayData = (books) => {
     //counting the number of books
     let count = 0;
     books.docs.forEach(book => {
+
         //checking if the exact named book is present or not
         if (book.has_fulltext === true) {
             count++;
@@ -45,9 +52,11 @@ const displayData = (books) => {
             displayBox.appendChild(div);
         }
     })
-    // finding the total result.. here I used numFound value and Count value.
-    // here if my input field is empty then it will show the total result 0 and if there is no search result then it will also show the total result as 0. that's why I didn't use any other error handling. 
+    // finding the total result.. here I used numFound value and Count value. 
     const div2 = document.createElement("div");
-    div2.innerHTML = ` <h4 class="text-success">${books.numFound} result found, ${count}  displaying</h4>`;
+    div2.innerHTML = ` <h4 class="text-success">${books.numFound} results found, ${count}  displaying</h4>`;
     resultBox.appendChild(div2);
+    if (count === 0) {
+        alert('No book found in this name');
+    }
 }
