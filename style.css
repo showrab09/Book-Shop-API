@@ -1,4 +1,18 @@
 body{
-    background-color: #c4bfbf;
-    
+    background-color: #efeff3;
+}
+
+.book{
+     box-shadow: 8px 8px 15px #a8aeb1;
+     transition: .2s;
+     margin-top: 25px;
+     margin-bottom: 40px;
+}
+.book:hover{
+    transform: translateY(-20px);
+}
+footer{
+    text-align: center;
+    background-color: #909597;
+    padding: 10px 20px;
 }
