@@ -60,6 +60,6 @@ const displayData = (books) => {
     div2.innerHTML = ` <h4 class="text-success">${books.numFound} results found, ${count}  displaying</h4>`;
     resultBox.appendChild(div2);
     if (count === 0) {
-        alert('No book found in this name');
+        alert('No book is found in this name');
     }
 }
